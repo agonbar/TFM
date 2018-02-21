@@ -1,0 +1,27 @@
+{
+    "name": "TFM",
+    "version": "0.0.1",
+    "description": "A test Node.js app for my TFM",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "uws": "*"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/agonbar/TFM"
+    },
+    "keywords": [
+      "TFM",
+      "agonbar",
+      "heart",
+      "ECG"
+    ],
+    "author": "Adrian Gonzalez Barbosa",
+    "contributors": [
+      "Adrian Gonzalez Barbosa <adrian.gonzalez.barbosa@gmail.com> (http://adriangonzalezbarbosa.eu)"
+    ],
+    "license": "MIT"
+  }
