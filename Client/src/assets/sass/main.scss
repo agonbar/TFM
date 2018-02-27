@@ -1,0 +1,33 @@
+// src/assets/sass/main.scss
+@import '~bulma/bulma';
+
+$color_1: #2c3e50;
+$color_2: #42b983;
+$font_family_1: 'Avenir', Helvetica, Arial, sans-serif;
+
+#app {
+	font-family: $font_family_1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: $color_1;
+}
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+li {
+	border: $color_2;
+	border-style: inset;
+}
+a {
+	color: $color_2;
+}
+img {
+	max-width: 80%;
+}
+span {
+	>button.remove-button {
+		float: left;
+	}
+}
