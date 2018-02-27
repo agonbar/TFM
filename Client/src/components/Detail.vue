@@ -10,12 +10,14 @@
           <div><a href="../assets/sample.txt">Archivo{{sample.id}}</a></div>
           <img src="../assets/ECG.png" alt=""/>
       </li>
-    </ul>
+    </ul> 
   </div>
     
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'Detail',
   data () {
