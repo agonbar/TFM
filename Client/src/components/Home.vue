@@ -14,18 +14,21 @@
         </a>
       </div>
     </div>
-    <div class="tile is-parent" v-for="person in people" v-bind:key="person.id" v-on:click="person.detail = !person.detail">
-      <article class="message is-info">
-        <div class="message-header">{{person.name}} - {{person.age}}
-          <button class="delete" v-on:click="removePeople(person.id)"></button>
-        </div>
-        <div class="message-body" v-on:click="$router.push('/detail')">
-          {{person.description}}
-          <figure class="image is-4by3">
-            <img :src="person.img1">
-          </figure>
-        </div>
-      </article>
+    <div class="tile is-ancestor">
+      <div class="tile is-parent" v-for="person in people" v-bind:key="person.id" v-on:click="person.detail = !person.detail">
+        <article class="message is-info">
+          <div class="message-header">{{person.name}} - {{person.age}}
+            <button class="delete" v-on:click="removePeople(person.id)"></button>
+          </div>
+          <div class="message-body" v-on:click="$router.push('/detail/'+person.id)">
+            {{person.description}}
+            <div v-for="sample in person.samples" v-bind:key="sample.id">
+              <span>{{sample.id}}: {{sample.file}}}</span>
+              <span class="image is-4by3"><img v-bind:src="sample.img1"/></span>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </template>
@@ -42,12 +45,14 @@
             age: 18,
             detail: false,
             samples: [{
-                file: "../assets/sample.txt",
-                img1: "../assets/ECG.png"
+                id: 1,
+                file: "../assets/sample1.txt",
+                img1: require('../assets/img/ECG.png')
               },
               {
-                file: "../assets/sample.txt",
-                img1: "../assets/ECG.png"
+                id: 2,
+                file: "../assets/sample2.txt",
+                img1: require('../assets/img/ECG.png')
               }
             ],
             description: "Esto es la descripción de uno de los clientes"
@@ -58,12 +63,19 @@
             age: 20,
             detail: false,
             samples: [{
-                file: "../assets/sample.txt",
-                img1: "../assets/ECG.png"
+                id: 1,
+                file: "../assets/sample3.txt",
+                img1: require('../assets/img/ECG.png')
               },
               {
-                file: "../assets/sample.txt",
-                img1: "../assets/ECG.png"
+                id: 2,
+                file: "../assets/sample4.txt",
+                img1: require('../assets/img/ECG.png')
+              },
+              {
+                id: 3,
+                file: "../assets/sample5.txt",
+                img1: require('../assets/img/ECG.png')
               }
             ],
             description: "Esto es la descripción de otro de los clientes"
@@ -74,12 +86,9 @@
             age: 22,
             detail: true,
             samples: [{
-                file: "../assets/sample.txt",
-                img1: "../assets/ECG.png"
-              },
-              {
-                file: "../assets/sample.txt",
-                img1: "../assets/ECG.png"
+                id: 1,
+                file: "../assets/sample6.txt",
+                img1: require('../assets/img/ECG.png')
               }
             ],
             description: "Esto es la descripción de otro más de los clientes"

@@ -2,7 +2,7 @@
   <div class="hello">
     <h1 class="title">{{ msg }}</h1>
     <div>
-        {{person.name}} - {{person.age}}
+        {{person.name}} - {{person.age}} - {{$route.params.id}}
     </div>
     <span>{{person.description}}</span>
     <ul>
