@@ -30,10 +30,7 @@ export default {
     patients: 'allPatients'
   }),
   methods: mapActions([
-    'addPatient'
-  ]),
-  created () {
-    this.$store.dispatch('getAllPatients')
-  }
+    'addSample'
+  ])
 }
 </script>

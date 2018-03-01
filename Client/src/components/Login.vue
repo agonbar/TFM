@@ -5,7 +5,7 @@
       <div class="card-content">
         <div class="field">
           <p class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="Email">
+            <input v-model="newUser.email" class="input" type="email" placeholder="Email">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -16,7 +16,7 @@
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password">
+            <input v-model="newUser.password" class="input" type="password" placeholder="Password">
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -24,7 +24,8 @@
         </div>
       </div>
       <footer class="card-footer">
-        <div class="card-footer-item" v-on:click="$router.push('/home')">
+        <div class="card-footer-item" v-on:click="login(newUser)">
+        <!--<div class="card-footer-item" v-on:click="$router.push('/home')">-->
             <a>Login</a>
         </div>
         <div class="card-footer-item" v-on:click="$router.push('/home')">
@@ -38,13 +39,19 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+
   export default {
     name: 'Login',
     data() {
       return {
-        msg: 'Login'
+        msg: 'Login',
+        newUser: {}
       }
-    }
+    },
+    methods:
+      mapActions([
+        'login'
+      ])
   }
-
 </script>

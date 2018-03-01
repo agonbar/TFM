@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueNativeSock from 'vue-native-websocket'
 
 // Require the main Sass manifest file
 require('./assets/sass/main.scss');
@@ -17,4 +18,12 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
+})
+
+Vue.use(VueNativeSock, 'ws://localhost:3000', { 
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 3000,
+  store: store,
+  format: 'json'
 })

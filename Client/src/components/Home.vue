@@ -40,11 +40,11 @@
     name: 'Home',
     data() {
       return {
-        newPerson: {},
-        msg: 'Listado pacientes'
+        msg: 'Listado pacientes',
+        newPerson: {}
       }
     },
-    methods: //{
+    methods:
       mapActions([
         'addPatient',
         'removePatient'
@@ -52,9 +52,5 @@
     computed: mapGetters({
       patients: 'allPatients'
     }),
-    created () {
-      this.$store.dispatch('getAllPatients')
-    }
   }
-
 </script>
