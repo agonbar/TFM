@@ -25,13 +25,24 @@
       </div>
       <footer class="card-footer">
         <div class="card-footer-item" v-on:click="login(newUser)">
-        <!--<div class="card-footer-item" v-on:click="$router.push('/home')">-->
-            <a>Login</a>
+          <!--<div class="card-footer-item" v-on:click="$router.push('/home')">-->
+          <a>Login</a>
         </div>
         <div class="card-footer-item" v-on:click="$router.push('/home')">
-            <a>Register</a>
+          <a>Register</a>
         </div>
       </footer>
+    </div>
+    <transition name="fade">
+      <div class="notification is-danger" v-if="user.status == 'error'">
+        Wrong email or password.
+      </div>
+    </transition>
+    <div class="modal is-activee">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <progress class="progress is-primary" value="15" max="100">30%</progress>
+      </div>
     </div>
 
   </div>
@@ -39,7 +50,10 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import {
+    mapGetters,
+    mapActions
+  } from 'vuex'
 
   export default {
     name: 'Login',
@@ -49,9 +63,12 @@
         newUser: {}
       }
     },
-    methods:
-      mapActions([
-        'login'
-      ])
+    methods: mapActions([
+      'login'
+    ]),
+    computed: mapGetters({
+      user: 'thisUser'
+    }),
   }
+
 </script>

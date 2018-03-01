@@ -10,6 +10,7 @@ const state = {
 // actions
 const actions = {
     sendSocket ({ commit }, data) {
+        data.token = this.getters.thisUser.token;
         this._vm.$socket.sendObj(data);
     }
 }

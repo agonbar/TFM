@@ -3,23 +3,20 @@ import router from "../../router/index.js"
 // initial state
 const state = {
   user: {
-    isLoggedIn: false,
-    loginFailed: false,
-    token: ''
+    token: localStorage.getItem('user-token') ||  '',
+    status: '',
   }
 }
 // getters
 const getters = {
-  thisUser: state => state.user
+  thisUser: state => state.user,
+  isAuthenticated: state => !!state.user.token,
+  authStatus: state => state.user.status
 }
 // actions
 const actions = {
-  getThisUser (context) {
-    state.user;
-  },
   login (context, data) {
       context.commit('NEW_TRY');
-      if (state.user.token != '') { data = {auth: state.user.token}};
       context.dispatch('sendSocket', {POST: data});
   }
 }
@@ -27,18 +24,18 @@ const actions = {
 // mutations
 const mutations = {
   NEW_TRY(state) {
-    state.user.loginFailed = false;
+    state.user.status = 'loading';
     state.user.token = '';
   },
   LOGIN_SUCCESS(state, response) {
-    state.user.isLoggedIn = true;
+    state.user.status = 'loggedIn';
     state.user.token = response.token;
+    localStorage.setItem('user-token',response.token);
     router.push('/home');
   },
   LOGIN_ERROR(state, response) {
-    state.user.isLoggedIn = false;
+    state.user.status = 'error';
     state.user.token = '';
-    state.user.loginFailed = true;
   }
 }
 
