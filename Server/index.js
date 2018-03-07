@@ -27,12 +27,12 @@ function onMessage(message) {
     
     var data = JSON.parse(message);
     if((data.POST != null || data.PUT != null || data.DELETE != null) && 
-        ((data.token == db.token) || (data.POST.email == db.email && data.POST.password == db.password))) {
+        ((data.token == db.token) || (data.POST != null && data.POST.email == db.email && data.POST.password == db.password))) {
             this.send('{ "mutation": "LOGIN_SUCCESS", "token": "'+ db.token+'" }');
             this.send('{ "mutation": "PATIENT_DATA", "token": "'+ db.token+'", "patients": '+JSON.stringify(db.patients)+' }');
     }
     else if((data.GET != null || data.PUT != null || data.DELETE != null) && 
-    ((data.token == db.token) || (data.POST.email == db.email && data.POST.password == db.password))) {
+    (data.token == db.token)) {
         this.send('{ "mutation": "PATIENT_DATA", "token": "'+ db.token+'", "patients": '+JSON.stringify(db.patients)+' }');
     }
     else this.send('{ "mutation": "LOGIN_ERROR" }');

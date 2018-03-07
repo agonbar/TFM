@@ -19,7 +19,7 @@ const actions = {
 const mutations = {
     SOCKET_ONOPEN (state, event)  {
         state.socket.isConnected = true;
-        if(this.getters.thisUser.token != null) {
+        if(this.getters.thisUser.token != '') {
             this._vm.$socket.sendObj({GET: "data", token: this.getters.thisUser.token});
         }
     },
