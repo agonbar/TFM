@@ -5,6 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 ADD . /usr/src/app
 RUN npm install
+RUN npm install -g serve
 
 ENV NODE_ENV=production
 
@@ -15,5 +16,5 @@ RUN rm -rf ./src
 RUN rm -rf ./build
 
 # Port to expose
-EXPOSE 8080
-CMD [ "npm", "start" ]
+EXPOSE 5000
+CMD [ "serve", "dist" ]
