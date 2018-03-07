@@ -36,6 +36,7 @@ const mutations = {
   LOGIN_ERROR(state, response) {
     state.user.status = 'error';
     state.user.token = '';
+    router.push('/');
   }
 }
 

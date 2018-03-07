@@ -16,6 +16,7 @@ const ifNotAuthenticated = (to, from, next) => {
 
 const ifAuthenticated = (to, from, next) => {
   if (store.getters.isAuthenticated) {
+    store.dispatch('getAllPatients');
     return next('/home');
   }
   return next();

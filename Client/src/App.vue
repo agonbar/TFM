@@ -2,7 +2,9 @@
   <div id="app">
     <a href="#/"><img src="./assets/logo.png"></a>
     <div class="container">
-      <router-view/>
+      <transition name="fade">
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>

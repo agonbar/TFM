@@ -1,10 +1,6 @@
 // initial state
 const state = {
-    all: [
-      { id: 0, name: "jhon", age: 18,samples: [{id: 1,file: "../../assets/sample1.txt",img1: require('../../assets/img/ECG.png')},{id: 2,file: "../../assets/sample2.txt",img1: require('../../assets/img/ECG.png')}],description: "Esto es la descripción de uno de los clientes"},
-      { id: 1, name: "eva" , age: 20,samples: [{id: 1,file: "../../assets/sample3.txt",img1: require('../../assets/img/ECG.png')},{id: 2,file: "../../assets/sample4.txt",img1: require('../../assets/img/ECG.png')},{ id: 3,file: "../../assets/sample5.txt",img1: require('../../assets/img/ECG.png')}],description: "Esto es la descripción de otro de los clientes"},
-      { id: 2,name: "dove" , age: 22,samples: [{id: 1,file: "../../assets/sample6.txt",img1: require('../../assets/img/ECG.png')}],description: "Esto es la descripción de otro más de los clientes"}
-    ]
+  all: []
 }
   
 // getters
@@ -15,8 +11,10 @@ const getters = {
 // actions
 const actions = {
   getAllPatients (context) {
-      context.dispatch('sendSocket', {GET: 'patient'});
-      state.all;
+      context.dispatch('sendSocket', {GET: "patients"});
+  },
+  setAllPatients (context, patients) {
+    context.commit('setPatientsInternal', patients);
   },
   addPatient (context, patient) {
     context.commit('addPatientInternal', patient);
@@ -34,7 +32,7 @@ const actions = {
 
 // mutations
 const mutations = {
-  setPatients (state, patients) {
+  setPatientsInternal (state, patients) {
     state.all = patients
   },
   addPatientInternal (state,patient) {
@@ -54,6 +52,10 @@ const mutations = {
   },
   addSampleInternal (state, patientId, sample) {
     state.all[patientId].samples.push(sample);
+  },
+  PATIENT_DATA(state, response) {
+    console.log(response);
+    state.all = response.patients;
   }
 }
   

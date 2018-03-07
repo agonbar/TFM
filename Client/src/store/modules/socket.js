@@ -18,7 +18,10 @@ const actions = {
 // mutations
 const mutations = {
     SOCKET_ONOPEN (state, event)  {
-        state.socket.isConnected = true
+        state.socket.isConnected = true;
+        if(this.getters.thisUser.token != null) {
+            this._vm.$socket.sendObj({GET: "data", token: this.getters.thisUser.token});
+        }
     },
     SOCKET_ONCLOSE (state, event)  {
         state.socket.isConnected = false
@@ -30,8 +33,6 @@ const mutations = {
     SOCKET_ONMESSAGE (state, message)  {
         console.log(message);
         state.message = message;
-        
-        //if
     },
     SOCKET_RECONNECT (state, event)  {
         state.socket.isConnected = true
