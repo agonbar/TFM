@@ -9,7 +9,7 @@
     <ul>
       <li v-for="sample in patients[$route.params.id].samples" v-bind:key="sample.id" class="box">
           <div><a href="../assets/sample.txt">Archivo {{sample.id}}: {{sample.file}}}</a></div>
-          <img v-bind:src="sample.img1"/>
+          <line-chart :data="sample.chartData"></line-chart>
       </li>
     </ul> 
   </div>

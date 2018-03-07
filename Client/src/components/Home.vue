@@ -23,8 +23,8 @@
           <div class="message-body" v-on:click="$router.push('/detail/'+person.id)">
             {{person.description}}
             <div v-for="sample in person.samples" v-bind:key="sample.id">
-              <span>{{sample.id}}: {{sample.file}}}</span>
-              <span class="image is-4by3"><img v-bind:src="sample.img1"/></span>
+              <span>{{sample.id}}: {{sample.file}}</span>
+              <span class=""><line-chart :data="sample.chartData"></line-chart></span>
             </div>
           </div>
         </article>

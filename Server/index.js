@@ -5,9 +5,20 @@ var wss = new WebSocketServer({ port: 3000 });
 var db = { 
     email:1, password: 1, token: "aabbccddeeff" ,
     patients: [
-        { id: 0, name: "jhon", age: 18,samples: [{id: 1,file: "../../assets/sample1.txt",img1: '../../assets/img/ECG.png'},{id: 2,file: "../../assets/sample2.txt",img1: '../../assets/img/ECG.png'}],description: "Esto es la descripción de uno de los clientes"},
-        { id: 1, name: "eva" , age: 20,samples: [{id: 1,file: "../../assets/sample3.txt",img1: '../../assets/img/ECG.png'},{id: 2,file: "../../assets/sample4.txt",img1: '../../assets/img/ECG.png'},{ id: 3,file: "../../assets/sample5.txt",img1: '../../assets/img/ECG.png'}],description: "Esto es la descripción de otro de los clientes"},
-        { id: 2,name: "dove" , age: 22,samples: [{id: 1,file: "../../assets/sample6.txt",img1: '../../assets/img/ECG.png'}],description: "Esto es la descripción de otro más de los clientes"}
+        { id: 0, name: "jhon", age: 18,samples: [
+            {id: 1,file: "../../assets/sample1.txt",
+            chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]},
+            {id: 2,file: "../../assets/sample2.txt",
+            chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]}]
+          ,description: "Esto es la descripción de uno de los clientes"},
+        { id: 1, name: "eva" , age: 20,samples: [
+            {id: 1,file: "../../assets/sample3.txt",chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]},
+            {id: 2,file: "../../assets/sample4.txt",chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]},
+            { id: 3,file: "../../assets/sample5.txt",chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]}]
+          ,description: "Esto es la descripción de otro de los clientes"},
+        { id: 2,name: "dove" , age: 22,samples: [
+            {id: 1,file: "../../assets/sample6.txt",chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]]}],
+          description: "Esto es la descripción de otro más de los clientes"}
       ]
 }
 
